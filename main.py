@@ -5,6 +5,7 @@ import numpy as np
 import pandas as pd
 from dotenv import load_dotenv
 from fastapi import FastAPI, File, HTTPException, Query, UploadFile
+from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import create_engine
 
 load_dotenv()
@@ -13,6 +14,12 @@ model = joblib.load("model.joblib")
 THRESHOLD = 1.672
 
 app = FastAPI(title="Energy Forecaster API")
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 def load_usage():
@@ -104,3 +111,10 @@ def upload(file: UploadFile = File(...)):
         "rows_added": len(new_rows),
         "rows_skipped": len(df) - len(new_rows),
     }
+
+
+@app.get("/history")
+def history(hours: int = Query(168, ge=24, le=720)):
+    result = load_usage().tail(hours).round(3).reset_index()
+    result["timestamp"] = result["timestamp"].astype(str)
+    return result.to_dict(orient="records")
