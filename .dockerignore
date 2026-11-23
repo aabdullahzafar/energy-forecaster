@@ -1,0 +1,10 @@
+.dockerignore
+.git
+.gitignore
+.gcloudignore
+.env
+.venv/
+data/
+__pycache__/
+*.ipynb
+frontend/
