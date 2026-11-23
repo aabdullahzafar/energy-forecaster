@@ -1,0 +1,56 @@
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+.page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+.card {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.spike {
+  color: #dc2626;
+  font-weight: 600;
+}
+
+.drop {
+  color: #2563eb;
+  font-weight: 600;
+}
+
+.hint {
+  color: #64748b;
+  font-size: 14px;
+}
+
+button {
+  margin-left: 8px;
+  padding: 6px 16px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
