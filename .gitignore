@@ -1,0 +1,4 @@
+.env
+.venv/
+data/household_power_consumption.txt
+__pycache__/
